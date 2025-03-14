@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnManagerX : MonoBehaviour
 {
     public GameObject[] ballPrefabs;
+    public GameObject gamooverPanel;
 
     private float spawnLimitXLeft = -22;
     private float spawnLimitXRight = 7;
@@ -12,10 +13,18 @@ public class SpawnManagerX : MonoBehaviour
 
     private float startDelay = 1.0f;
     private float spawnInterval = 4.0f;
-
-    // Start is called before the first frame update
+    void OnEnable()
+    {
+        gamooverPanel.SetActive(false);
+        DestroyOutOfBoundsX.OnGameover += OnGameover;
+    }
+    void OnDisable()
+    {
+        DestroyOutOfBoundsX.OnGameover -= OnGameover;
+    }
     void Start()
     {
+        spawnInterval = Random.Range(3.0f, 5.0f);
         InvokeRepeating("SpawnRandomBall", startDelay, spawnInterval);
     }
 
@@ -26,7 +35,14 @@ public class SpawnManagerX : MonoBehaviour
         Vector3 spawnPos = new Vector3(Random.Range(spawnLimitXLeft, spawnLimitXRight), spawnPosY, 0);
 
         // instantiate ball at random spawn location
-        Instantiate(ballPrefabs[0], spawnPos, ballPrefabs[0].transform.rotation);
+        int idx = Random.Range(0, ballPrefabs.Length);
+        Instantiate(ballPrefabs[idx], spawnPos, ballPrefabs[idx].transform.rotation);
+    }
+
+    private void OnGameover()
+    {
+        gamooverPanel.SetActive(true);
+        CancelInvoke(nameof(SpawnRandomBall));
     }
 
 }

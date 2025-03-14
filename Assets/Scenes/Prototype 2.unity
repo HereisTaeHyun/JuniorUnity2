@@ -825,6 +825,7 @@ MonoBehaviour:
   - {fileID: 2114280372091564477, guid: 881b62367b93cf743b8299312ae5c668, type: 3}
   - {fileID: 8341168240177090770, guid: 444b547d749bec14cb0fd143f53b1322, type: 3}
   - {fileID: 1307968019330978606, guid: 4c3ddbb252b5879419f3b33985a4d334, type: 3}
+  gamooverPanel: {fileID: 415146960}
 --- !u!4 &973798080
 Transform:
   m_ObjectHideFlags: 0
