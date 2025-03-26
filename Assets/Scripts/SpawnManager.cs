@@ -10,14 +10,14 @@ public class SpawnManager : MonoBehaviour
     private float spawnPointZ = 20.0f;
     private float startDelay = 2.0f;
     private float spawnDelay = 2.0f;
-    private void OnEnable()
-    {
-        DestroyOutOfBounds.OnGameOver += OnGameOverPanel;
-    }
-    private void OnDisable()
-    {
-        
-    }
+    // private void OnEnable()
+    // {
+    //     DestroyOutOfBounds.OnGameOver += OnGameOverPanel;
+    // }
+    // private void OnDisable()
+    // {
+    //     DestroyOutOfBounds.OnGameOver -= OnGameOverPanel;
+    // }
 
     void Start()
     {
